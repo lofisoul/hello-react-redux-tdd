@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from '@testing-library/react';
-import {RestaurantList} from '../RestaurantList';
+import {RestaurantList} from '../components/RestaurantList';
 
 describe('RestaurantList', () => {
 	const restaurants = [

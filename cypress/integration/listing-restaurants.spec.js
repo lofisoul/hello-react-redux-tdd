@@ -1,5 +1,5 @@
 import {API_KEY} from '../../config';
-import RestaurantList from '../../src/RestaurantList';
+import RestaurantList from '../../src/components/RestaurantList';
 
 describe('Listing Restaurants', () => {
 	it('shows restaurants from the server', () => {
