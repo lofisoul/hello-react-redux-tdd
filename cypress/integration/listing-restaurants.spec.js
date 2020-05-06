@@ -1,4 +1,4 @@
-import {API_KEY} from '../../config';
+import {API_KEY} from '../../src/config';
 import RestaurantList from '../../src/components/RestaurantList';
 
 describe('Listing Restaurants', () => {
