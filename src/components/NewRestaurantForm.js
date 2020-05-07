@@ -2,13 +2,20 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Alert from '@material-ui/lab/Alert';
 import {createRestaurant} from '../store/restaurants/actions';
 
 export const NewRestaurantForm = ({createRestaurant}) => {
 	const [name, setName] = useState('');
+	const [validationError, setValidationError] = useState(false);
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		if (!name) {
+			setValidationError(true);
+		} else {
+			setValidationError(false);
+		}
 		createRestaurant(name).then(() => {
 			setName('');
 		});
@@ -16,6 +23,9 @@ export const NewRestaurantForm = ({createRestaurant}) => {
 
 	return (
 		<form onSubmit={handleSubmit}>
+			{validationError && (
+				<Alert severity="error">Name is required</Alert>
+			)}
 			<TextField
 				placeholder="Add Restaurant"
 				fullWidth
