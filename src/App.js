@@ -23,7 +23,7 @@ const App = () => {
 				<CssBaseline />
 				<AppBar position="static">
 					<Toolbar>
-						<Typography variant="h6">
+						<Typography variant="h4" style={{color: '#fff'}}>
 							Hello React-Redux TDD
 						</Typography>
 					</Toolbar>
