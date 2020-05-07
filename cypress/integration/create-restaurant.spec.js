@@ -17,7 +17,7 @@ describe('Creating a restaurant', () => {
 			url: `https://api.outsidein.dev/${API_KEY}/restaurants`,
 			response: {
 				id: restaurantId,
-				name: restaurantId,
+				name: restaurantName,
 			},
 		}).as('addRestaurant');
 
