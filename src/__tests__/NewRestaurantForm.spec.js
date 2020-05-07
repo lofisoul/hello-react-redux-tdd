@@ -1,6 +1,7 @@
 import React from 'react';
-import {render} from '@testing-library/react';
+import {render, act} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import flushPromises from 'flush-promises';
 import {NewRestaurantForm} from '../components/NewRestaurantForm';
 
 describe('NewRestaurantForm', () => {
@@ -18,16 +19,24 @@ describe('NewRestaurantForm', () => {
 
 	describe('when filled in', () => {
 		beforeEach(async () => {
+			createRestaurant.mockResolvedValue();
 			const {getByPlaceholderText, getByTestId} = context;
 			await userEvent.type(
 				getByPlaceholderText('Add Restaurant'),
 				restaurantName,
 			);
 			userEvent.click(getByTestId('new-restaurant-submit-button'));
+
+			return act(flushPromises);
 		});
 
 		it('calls createRestaurant with the name', () => {
 			expect(createRestaurant).toHaveBeenCalledWith(restaurantName);
+		});
+
+		it('clears the name', () => {
+			const {getByPlaceholderText} = context;
+			expect(getByPlaceholderText('Add Restaurant').value).toEqual('');
 		});
 	});
 });
